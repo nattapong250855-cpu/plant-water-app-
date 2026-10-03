@@ -17,68 +17,94 @@ st.set_page_config(
     layout="centered"
 )
 
-# ปรับแต่ง UI เพิ่มเติมด้วย CSS พื้นหลังเขียวอ่อน ตัวหนังสือสีดำ อ่านง่าย
+# ปรับแต่ง UI โทนพาสเทล เขียว-เหลือง-ชมพู ฟอนต์โค้งมนน่ารัก
 st.markdown("""
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+    html, body, .stApp, p, span, label, div {
+        font-family: 'Mali', sans-serif !important;
+    }
     .stApp {
-        background-color: #A5D6A7;
+        background: linear-gradient(180deg, #F3FBF2 0%, #FFFDF0 50%, #FFF4F8 100%);
     }
-    h1, h2, h3, p, span, label {
-        color: #1B1B1B !important;
+    h1, h2, h3 {
+        color: #2D7A4F !important;
+        font-weight: 700 !important;
     }
+    p, span, label, li {
+        color: #2D2D2D !important;
+    }
+
+    /* การ์ด Metric (ชื่อพืช/ประเภท/รอบรดน้ำ) */
     div[data-testid="stMetric"] {
         background-color: #FFFFFF;
-        border-radius: 12px;
-        padding: 12px 8px;
+        border: 3px solid #BDECC9;
+        border-radius: 20px;
+        padding: 14px 10px;
         text-align: center;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        overflow: visible;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
     div[data-testid="stMetricLabel"] {
-        color: #2E7D32 !important;
+        color: #E8A7C4 !important;
+        font-weight: 600 !important;
     }
     div[data-testid="stMetricValue"] {
-        color: #1B1B1B !important;
+        color: #2D2D2D !important;
         white-space: normal !important;
         overflow: visible !important;
         text-overflow: unset !important;
-        font-size: 1.2rem !important;
+        font-size: 1.15rem !important;
         line-height: 1.3 !important;
         word-break: break-word;
     }
+
+    /* ปุ่มทุกปุ่ม โทนเขียวพาสเทล ตัวหนังสือขาว ทรงมนน่ารัก */
     .stButton > button {
-        background-color: #2E7D32;
+        background-color: #8FE3AE;
         color: #FFFFFF !important;
-        border-radius: 8px;
-        border: 2px solid #2E7D32;
-        font-weight: 600;
+        border-radius: 24px;
+        border: none;
+        font-weight: 700;
+        padding: 8px 20px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.12);
     }
     .stButton > button:hover {
-        background-color: #1B5E20;
+        background-color: #6FD191;
         color: #FFFFFF !important;
-        border: 2px solid #1B5E20;
     }
+
+    /* กล่อง expander (รายการต้นไม้ที่ติดตาม) โทนชมพูพาสเทล */
     div[data-testid="stExpander"] {
-        border-radius: 10px;
-        background-color: #FFFFFF;
+        border-radius: 18px;
+        background-color: #FFE9F3;
+        border: 2px solid #FFC7E0;
     }
     div[data-testid="stExpander"] p, div[data-testid="stExpander"] label {
-        color: #1B1B1B !important;
+        color: #2D2D2D !important;
     }
+    div[data-testid="stExpander"] summary {
+        color: #C4477A !important;
+        font-weight: 700 !important;
+    }
+
+    /* Sidebar โทนเหลืองพาสเทล */
     section[data-testid="stSidebar"] {
-        background-color: #FFFFFF;
+        background-color: #FFF8DC;
     }
     section[data-testid="stSidebar"] h1, section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3, section[data-testid="stSidebar"] p,
     section[data-testid="stSidebar"] label {
-        color: #1B1B1B !important;
+        color: #6B5B1E !important;
     }
+
+    /* กล่องแจ้งเตือนทุกชนิด (success/warning/error) ขอบมนพาสเทล */
     div[data-testid="stAlert"] {
-        border-radius: 10px;
-        background-color: #FFFFFF;
+        border-radius: 16px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.08);
     }
     div[data-testid="stAlert"] p {
-        color: #1B1B1B !important;
+        color: #2D2D2D !important;
+        font-weight: 600;
     }
 </style>
 """, unsafe_allow_html=True)
