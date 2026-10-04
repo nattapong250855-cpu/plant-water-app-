@@ -21,8 +21,17 @@ st.set_page_config(
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    html, body, .stApp, p, span, label, div {
+    /* ใช้ฟอนต์ Mali เฉพาะกับข้อความจริง ๆ ไม่แตะต้องไอคอนของ Streamlit
+       (ก่อนหน้านี้บังคับทับ div/span ทั้งหมด ทำให้ไอคอนพังกลายเป็นข้อความดิบ) */
+    html, body, .stApp, p, h1, h2, h3, h4, h5, h6,
+    label, li, .stMarkdown, button, input, textarea {
         font-family: 'Mali', sans-serif !important;
+    }
+    /* กันไม่ให้ไอคอน Material ของ Streamlit โดนฟอนต์ Mali ทับ */
+    span[data-testid="stIconMaterial"],
+    [class*="material-symbols"],
+    [class*="material-icons"] {
+        font-family: 'Material Symbols Rounded', 'Material Icons' !important;
     }
     .stApp {
         background: linear-gradient(180deg, #F3FBF2 0%, #FFFDF0 50%, #FFF4F8 100%);
@@ -87,9 +96,14 @@ st.markdown("""
         font-weight: 700 !important;
     }
 
-    /* Sidebar โทนเหลืองพาสเทล */
+    /* Sidebar โทนเหลืองพาสเทล ปรับความกว้างให้พอดีไม่บีบตัวหนังสือ */
     section[data-testid="stSidebar"] {
         background-color: #FFF8DC;
+        min-width: 260px !important;
+    }
+    section[data-testid="stSidebar"] input {
+        border-radius: 12px !important;
+        border: 2px solid #FFE08A !important;
     }
     section[data-testid="stSidebar"] h1, section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3, section[data-testid="stSidebar"] p,
